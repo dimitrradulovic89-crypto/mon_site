@@ -1,0 +1,2927 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dimitri Radulovic | Portfolio Cybersécurité</title>
+<meta content="Portfolio de Dimitri Radulovic, Analyste Cybersécurité Junior spécialisé SecOps et gestion des vulnérabilités." name="description"/>
+<style>
+    :root {
+      --bg: #dfe8f7;
+      --bg-soft: #edf3ff;
+      --card: rgba(255, 255, 255, 0.78);
+      --card-strong: rgba(248, 251, 255, 0.98);
+      --text: #10203e;
+      --muted: #4f6283;
+      --accent: #5eead4;
+      --accent-2: #60a5fa;
+      --border: rgba(16, 32, 62, 0.08);
+      --shadow: 0 18px 45px rgba(17, 36, 72, 0.12);
+      --radius: 20px;
+      --radius-sm: 14px;
+      --max-width: 1180px;
+      --nav-height: 78px;
+      --transition: 220ms ease;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(96, 165, 250, 0.18), transparent 30%),
+        radial-gradient(circle at top right, rgba(94, 234, 212, 0.14), transparent 24%),
+        linear-gradient(180deg, #f6f9ff 0%, #edf4ff 45%, #e5eefc 100%);
+      color: var(--text);
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--max-width));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 110px 0;
+      scroll-margin-top: 100px;
+    }
+
+    .section-title {
+      font-size: clamp(1.9rem, 1.1rem + 2vw, 3rem);
+      line-height: 1.15;
+      margin-bottom: 0.85rem;
+      letter-spacing: -0.03em;
+    }
+
+    .section-subtitle {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.02rem;
+      margin-bottom: 3rem;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      margin-bottom: 1rem;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.8;
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(18px);
+      background: rgba(255, 255, 255, 0.82);
+      border-bottom: 1px solid rgba(16, 32, 62, 0.08);
+      height: var(--nav-height);
+    }
+
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      color: #06121f;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 10px 20px rgba(94, 234, 212, 0.18);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #516684;
+      font-weight: 500;
+      transition: color var(--transition), opacity var(--transition);
+      position: relative;
+      padding-bottom: 0.15rem;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+    }
+
+    .nav-links a.active::after,
+    .nav-links a:hover::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      border-radius: 999px;
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.68rem 0.95rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.74);
+      border: 1px solid rgba(16, 32, 62, 0.08);
+      transition: transform var(--transition), background var(--transition), border-color var(--transition);
+      font-weight: 600;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.94);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: 0;
+      color: var(--text);
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+
+    .menu-toggle span,
+    .menu-toggle::before,
+    .menu-toggle::after {
+      content: "";
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: currentColor;
+      margin: 5px auto;
+      transition: transform var(--transition), opacity var(--transition);
+      border-radius: 999px;
+    }
+
+    .menu-toggle[aria-expanded="true"]::before {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"] span {
+      opacity: 0;
+    }
+
+    .menu-toggle[aria-expanded="true"]::after {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .hero {
+      padding: 80px 0 70px;
+      min-height: calc(100vh - var(--nav-height));
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(2.8rem, 1.2rem + 4vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      margin-bottom: 1rem;
+      max-width: 12ch;
+    }
+
+    .hero-copy h1 span {
+      background: none;
+      color: inherit;
+    }
+
+    .hero-copy .lead {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 58ch;
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-micro {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+    }
+
+    .micro-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.72rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(16, 32, 62, 0.08);
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--muted);
+      font-size: 0.94rem;
+      transition: transform var(--transition), background var(--transition);
+    }
+
+    .micro-pill:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      padding: 0.95rem 1.3rem;
+      border-radius: 999px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition), border-color var(--transition);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: #06121f;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 18px 35px rgba(96, 165, 250, 0.18);
+    }
+
+    .button-secondary {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.74);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .hero-panel {
+      border: 1px solid rgba(16, 32, 62, 0.08);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(236, 244, 255, 0.96));
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 1.2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: auto -20% -35% auto;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(94, 234, 212, 0.18), transparent 70%);
+      pointer-events: none;
+    }
+
+    .panel-window {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      background: rgba(248, 251, 255, 0.96);
+    }
+
+    .window-top {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.95rem 1rem;
+      border-bottom: 1px solid rgba(16, 32, 62, 0.08);
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+    }
+
+    .window-content {
+      padding: 1.25rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .stat-card {
+      background: rgba(16, 32, 62, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 18px;
+      padding: 1rem;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-value {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .hero-list {
+      list-style: none;
+      display: grid;
+      gap: 0.85rem;
+    }
+
+    .hero-list li {
+      color: var(--muted);
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .hero-list li::before {
+      content: "•";
+      color: var(--accent);
+      font-size: 1.1rem;
+      line-height: 1;
+      margin-top: 0.15rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 1.6rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      padding: 1.5rem;
+      transition: transform var(--transition), border-color var(--transition), background var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.14);
+      background: rgba(18, 25, 53, 0.9);
+    }
+
+    .about-text p + p {
+      margin-top: 1rem;
+    }
+
+    .about-points {
+      list-style: none;
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .about-points li {
+      padding: 1rem;
+      border-radius: 16px;
+      background: rgba(16, 32, 62, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      color: var(--muted);
+    }
+
+    .about-points strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 0.2rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .skill-card {
+      padding: 1.4rem;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(18, 25, 53, 0.8), rgba(13, 19, 42, 0.9));
+      box-shadow: var(--shadow);
+      transition: transform var(--transition), border-color var(--transition);
+    }
+
+    .skill-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(94, 234, 212, 0.3);
+    }
+
+    .skill-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .skill-card ul {
+      list-style: none;
+      display: grid;
+      gap: 0.7rem;
+      color: var(--muted);
+    }
+
+    .skill-card li {
+      position: relative;
+      padding-left: 1.1rem;
+    }
+
+    .skill-card li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+
+    .portfolio-intro {
+      margin-bottom: 1.8rem;
+      padding: 1.1rem 1.2rem;
+      border-left: 3px solid var(--accent);
+      background: rgba(16, 32, 62, 0.03);
+      border-radius: 0 16px 16px 0;
+      color: var(--muted);
+    }
+
+    .case-list {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .case-card {
+      background: var(--card-strong);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: transform var(--transition), border-color var(--transition);
+    }
+
+    .case-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.14);
+    }
+
+    .case-summary {
+      padding: 1.5rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .case-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .case-top h3 {
+      font-size: 1.35rem;
+      line-height: 1.2;
+      margin-bottom: 0.35rem;
+    }
+
+    .case-meta {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .case-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.74);
+      border: 1px solid rgba(16, 32, 62, 0.08);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .case-highlight {
+      color: var(--muted);
+      max-width: 95ch;
+    }
+
+    .case-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .toggle-button {
+      appearance: none;
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--text);
+      padding: 0.85rem 1.1rem;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform var(--transition), background var(--transition), border-color var(--transition);
+    }
+
+    .toggle-button:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.14);
+    }
+
+    .toggle-button[aria-expanded="true"] {
+      background: rgba(94, 234, 212, 0.1);
+      border-color: rgba(94, 234, 212, 0.28);
+    }
+
+    .case-detail {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 320ms ease;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      background: rgba(16, 32, 62, 0.02);
+    }
+
+    .case-card.open .case-detail {
+      grid-template-rows: 1fr;
+    }
+
+    .case-detail-inner {
+      overflow: hidden;
+    }
+
+    .case-detail-content {
+      padding: 1.5rem;
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.1rem;
+    }
+
+    .detail-block {
+      background: rgba(16, 32, 62, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 18px;
+      padding: 1.15rem;
+    }
+
+    .detail-block h4 {
+      font-size: 1rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .detail-block p,
+    .detail-block li {
+      color: var(--muted);
+      font-size: 0.97rem;
+    }
+
+    .detail-block ul {
+      list-style: none;
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .detail-block li {
+      position: relative;
+      padding-left: 1rem;
+    }
+
+    .detail-block li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: grid;
+      gap: 0.9rem;
+      color: var(--muted);
+    }
+
+    .contact-list strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
+    .availability {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.78rem 1rem;
+      border-radius: 999px;
+      background: rgba(94, 234, 212, 0.12);
+      border: 1px solid rgba(94, 234, 212, 0.18);
+      color: #0f6b5f;
+      margin-top: 1rem;
+    }
+
+    .availability::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #4ade80;
+      box-shadow: 0 0 0 6px rgba(74, 222, 128, 0.12);
+    }
+
+    .footer {
+      padding: 2rem 0 3rem;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+
+    .nav-shell {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .nav-cta {
+      font-size: 0.94rem;
+      white-space: nowrap;
+      color: var(--text);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .hero-panel .stat-card {
+      background: rgba(255, 255, 255, 0.74);
+    }
+
+    .hero-panel .stat-value {
+      line-height: 1.35;
+    }
+
+    .portfolio-intro strong {
+      color: var(--text);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-value {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+
+    .copy-button {
+      appearance: none;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.74);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 0.42rem 0.78rem;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform var(--transition), background var(--transition), border-color var(--transition);
+    }
+
+    .copy-button:hover {
+      transform: translateY(-1px);
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(94, 234, 212, 0.3);
+    }
+
+    .copy-button.copied {
+      background: rgba(94, 234, 212, 0.12);
+      border-color: rgba(94, 234, 212, 0.35);
+      color: #0f6b5f;
+    }
+
+    .version-card li + li {
+      margin-top: 0.9rem;
+    }
+
+
+
+    .brand {
+      padding: 0.5rem 0.9rem;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.72), rgba(255,255,255,0.48));
+      border: 1px solid rgba(16, 32, 62, 0.08);
+      box-shadow: 0 10px 22px rgba(16, 32, 62, 0.06);
+    }
+
+    .brand::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 0 6px rgba(94, 234, 212, 0.12);
+      flex-shrink: 0;
+    }
+
+    .brand-name {
+      font-size: 1.08rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #10203e;
+    }
+
+    .nav-cta {
+      background: linear-gradient(135deg, rgba(94, 234, 212, 0.16), rgba(96, 165, 250, 0.14));
+      border-color: rgba(94, 234, 212, 0.28);
+      color: #10203e;
+    }
+
+    .nav-cta:hover {
+      background: linear-gradient(135deg, rgba(94, 234, 212, 0.24), rgba(96, 165, 250, 0.18));
+      border-color: rgba(96, 165, 250, 0.28);
+    }
+
+    .hero-copy h1 {
+      max-width: 10.5ch;
+      text-shadow: 0 10px 26px rgba(15, 33, 63, 0.08);
+    }
+
+    .hero-copy h1 .hero-accent {
+      display: inline-block;
+      background: linear-gradient(135deg, #27d3c0 0%, #78e6da 48%, #8db7ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: none;
+      filter: saturate(1.12) contrast(1.08);
+    }
+
+    .study-grid .case-detail-content {
+      padding-top: 1rem;
+    }
+
+    .study-detail-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .study-detail-block {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(16, 32, 62, 0.1);
+      box-shadow: 0 14px 28px rgba(16, 32, 62, 0.06);
+      padding: 1.2rem 1.25rem;
+    }
+
+    .study-detail-block .detail-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-bottom: 0.9rem;
+      font-size: 0.96rem;
+      letter-spacing: -0.02em;
+    }
+
+    .study-detail-block .detail-kicker::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 0 5px rgba(94, 234, 212, 0.10);
+      flex-shrink: 0;
+    }
+
+    .study-detail-block p,
+    .study-detail-block li {
+      font-size: 0.99rem;
+      line-height: 1.75;
+      color: #314969;
+    }
+
+    .study-detail-block ul {
+      gap: 0.95rem;
+    }
+
+    .tools-columns-readable {
+      gap: 1.15rem;
+    }
+
+    .tools-columns-readable .tools-group {
+      background: linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,255,255,0.76));
+      border: 1px solid rgba(16, 32, 62, 0.12);
+      padding: 1.15rem;
+    }
+
+    .tools-columns-readable .tools-group h4 {
+      margin-bottom: 1rem;
+      font-size: 1.02rem;
+    }
+
+    .tools-columns-readable .tool-list {
+      gap: 0;
+    }
+
+    .tools-columns-readable .tool-list li {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.6rem;
+      padding: 0.85rem 0;
+      font-size: 0.98rem;
+      line-height: 1.55;
+    }
+
+    .tool-name {
+      color: #22395a;
+      font-weight: 600;
+    }
+
+    .contact-card-primary {
+      background: linear-gradient(145deg, rgba(255,255,255,0.92), rgba(245,250,255,0.82));
+      border: 1px solid rgba(96, 165, 250, 0.18);
+      box-shadow: 0 22px 50px rgba(16, 32, 62, 0.10);
+      padding: 1.7rem;
+    }
+
+    .contact-card-primary .contact-list {
+      gap: 1rem;
+    }
+
+    .contact-row {
+      background: rgba(255,255,255,0.6);
+      border: 1px solid rgba(16, 32, 62, 0.08);
+      border-radius: 18px;
+      padding: 1rem 1.05rem;
+    }
+
+    .contact-card-primary .contact-list strong {
+      font-size: 0.98rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .contact-item {
+      align-items: center;
+    }
+
+    .contact-value a {
+      font-weight: 600;
+      color: #274061;
+      word-break: break-word;
+    }
+
+    .copy-button {
+      background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(246,250,255,0.82));
+      border-color: rgba(16, 32, 62, 0.08);
+      min-width: 88px;
+      text-align: center;
+    }
+
+    .contact-card-secondary {
+      background: linear-gradient(145deg, rgba(16, 32, 62, 0.92), rgba(33, 58, 98, 0.90));
+      border-color: rgba(96,165,250,0.18);
+      color: rgba(255,255,255,0.92);
+    }
+
+    .contact-card-secondary .contact-list,
+    .contact-card-secondary .contact-list strong {
+      color: rgba(255,255,255,0.94);
+    }
+
+    .contact-card-secondary .contact-row {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    .version-pill {
+      display: inline-flex;
+      margin-top: 0.45rem;
+      padding: 0.38rem 0.72rem;
+      border-radius: 999px;
+      background: rgba(94, 234, 212, 0.16);
+      color: #d9fff9;
+      border: 1px solid rgba(94, 234, 212, 0.18);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 520ms ease, transform 520ms ease;
+      will-change: opacity, transform;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+
+    .brand-mark {
+      display: none;
+    }
+
+    .hero-badges {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+
+    .hero-badge-card {
+      background: rgba(16, 32, 62, 0.04);
+      border: 1px solid rgba(16, 32, 62, 0.08);
+      border-radius: 18px;
+      padding: 1rem;
+    }
+
+    .hero-badge-card strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      font-size: 1rem;
+    }
+
+    .hero-badge-card span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .plus-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .plus-item {
+      background: linear-gradient(180deg, rgba(94, 234, 212, 0.08), rgba(96, 165, 250, 0.08));
+      border: 1px solid rgba(96, 165, 250, 0.14);
+      border-radius: 18px;
+      padding: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .plus-item::before {
+      content: "✓";
+      position: absolute;
+      right: 1rem;
+      top: 0.8rem;
+      font-weight: 800;
+      color: rgba(96, 165, 250, 0.55);
+      font-size: 1.05rem;
+    }
+
+    .plus-item strong {
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .plus-item p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .timeline-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 1.35rem;
+      box-shadow: var(--shadow);
+    }
+
+    .timeline-year {
+      display: inline-flex;
+      padding: 0.38rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(96, 165, 250, 0.12);
+      color: #2459b7;
+      font-weight: 700;
+      font-size: 0.86rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .timeline-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .timeline-card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .meta-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 0.65rem;
+    }
+
+    .meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.42rem 0.72rem;
+      border-radius: 999px;
+      background: rgba(16, 32, 62, 0.05);
+      color: var(--muted);
+      border: 1px solid rgba(16, 32, 62, 0.08);
+      font-size: 0.88rem;
+    }
+
+    .matrix-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 1.4rem;
+    }
+
+    .matrix-table {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .matrix-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      padding: 0.95rem 1rem;
+      border-radius: 16px;
+      background: rgba(16, 32, 62, 0.03);
+      border: 1px solid rgba(16, 32, 62, 0.06);
+    }
+
+    .matrix-row strong { display:block; margin-bottom:0.15rem; }
+    .matrix-row span { color: var(--muted); font-size: 0.92rem; }
+
+    .level-badge {
+      padding: 0.38rem 0.7rem;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .level-maitrise { background: rgba(74, 222, 128, 0.14); color: #18794e; }
+    .level-competent { background: rgba(96, 165, 250, 0.14); color: #2459b7; }
+    .level-intermediaire { background: rgba(250, 204, 21, 0.16); color: #8a6a00; }
+    .level-moyen { background: rgba(251, 146, 60, 0.16); color: #9a4a00; }
+
+    .language-list {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .language-item {
+      padding: 1rem;
+      border-radius: 16px;
+      background: rgba(16, 32, 62, 0.03);
+      border: 1px solid rgba(16, 32, 62, 0.06);
+    }
+
+    .language-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.55rem;
+      align-items: center;
+    }
+
+    .language-item span { color: var(--muted); font-size: 0.92rem; }
+
+    .language-bar {
+      width: 100%;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(16, 32, 62, 0.08);
+      overflow: hidden;
+    }
+
+    .language-bar i {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .about-grid,
+      .contact-grid,
+      .detail-grid,
+      .skills-grid,
+      .matrix-grid,
+      .timeline-grid,
+      .hero-badges,
+      .plus-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 56px;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .menu-toggle {
+        display: inline-block;
+      }
+
+      .nav-shell {
+        position: fixed;
+        inset: var(--nav-height) 1rem auto 1rem;
+        background: rgba(255, 255, 255, 0.96);
+        border: 1px solid rgba(16, 32, 62, 0.08);
+        border-radius: 22px;
+        padding: 1rem;
+        box-shadow: var(--shadow);
+        transform: translateY(-20px);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--transition), transform var(--transition);
+      }
+
+      .nav-shell.open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .nav-cta {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+
+
+    /* Lisibilité renforcée dans les blocs foncés */
+    .skill-card,
+    .skill-card h3,
+    .skill-card h4,
+    .skill-card strong {
+      color: #f5f9ff;
+    }
+
+    .skill-card ul,
+    .skill-card li,
+    .skill-card p,
+    .skill-card span {
+      color: #d9e7ff;
+    }
+
+    .skill-card .tag {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.14);
+      color: #f5f9ff;
+    }
+
+    .card:hover,
+    .card:hover h3,
+    .card:hover h4,
+    .card:hover strong,
+    .card:hover .contact-value,
+    .card:hover .stat-value {
+      color: #f5f9ff;
+    }
+
+    .card:hover p,
+    .card:hover li,
+    .card:hover span,
+    .card:hover .contact-label,
+    .card:hover .stat-label,
+    .card:hover .section-subtitle {
+      color: #d9e7ff;
+    }
+
+    .card:hover .about-points li,
+    .card:hover .detail-block,
+    .card:hover .hero-badge-card,
+    .card:hover .plus-item,
+    .card:hover .meta-pill,
+    .card:hover .timeline-year {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.12);
+      color: #f5f9ff;
+    }
+
+    .card:hover .tag,
+    .card:hover .copy-button {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.14);
+      color: #f5f9ff;
+    }
+
+    @media (max-width: 640px) {
+      .section {
+        padding: 88px 0;
+      }
+
+      .hero-copy h1 {
+        max-width: none;
+      }
+
+      .case-summary,
+      .case-detail-content,
+      .card,
+      .skill-card {
+        padding: 1.2rem;
+      }
+
+      .button,
+      .toggle-button {
+        width: 100%;
+      }
+
+      .hero-actions,
+      .case-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+    }
+  
+
+    /* --- readability and accordions updates --- */
+    .hero-copy h1 {
+      color: #0d234f;
+      text-shadow: 0 8px 24px rgba(90, 130, 190, 0.10);
+    }
+
+    .hero-copy h1 span {
+      background: linear-gradient(90deg, #1f4ea3 0%, #1fa6a0 48%, #0f234a 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+      filter: saturate(1.05) contrast(1.05);
+    }
+
+    .hero-panel {
+      background: rgba(255,255,255,0.62);
+      border-radius: 30px;
+      padding: 0.9rem;
+      border: 1px solid rgba(16, 32, 62, 0.12);
+      box-shadow: 0 24px 60px rgba(17, 36, 72, 0.14);
+    }
+
+    .panel-window {
+      background: rgba(255, 255, 255, 0.90);
+      border: 1px solid rgba(16, 32, 62, 0.14);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.65);
+    }
+
+    .window-top {
+      border-bottom: 1px solid rgba(16, 32, 62, 0.10);
+      background: linear-gradient(180deg, rgba(245,248,255,0.95), rgba(236,242,251,0.9));
+    }
+
+    .stat-card,
+    .detail-block,
+    .matrix-row,
+    .language-item {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(16, 32, 62, 0.10);
+      box-shadow: 0 10px 22px rgba(16, 32, 62, 0.04);
+    }
+
+    .hero-list li,
+    .matrix-row span,
+    .timeline-card p,
+    .detail-block p,
+    .detail-block li,
+    .case-highlight,
+    .section-subtitle,
+    .portfolio-intro,
+    .lead {
+      color: #40567a;
+    }
+
+    .study-grid {
+      display: grid;
+      gap: 1.2rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .study-grid .case-summary { padding: 1.35rem; }
+    .study-grid .case-top h3 { font-size: 1.12rem; }
+    .study-grid .case-meta { font-size: 0.95rem; }
+    .study-grid .case-detail-content { padding-top: 0.6rem; }
+
+    .tools-card .case-summary { padding: 1.35rem; }
+    .tools-columns {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .tools-group {
+      background: rgba(255,255,255,0.74);
+      border: 1px solid rgba(16, 32, 62, 0.10);
+      border-radius: 18px;
+      padding: 1rem;
+      box-shadow: 0 12px 24px rgba(16, 32, 62, 0.05);
+    }
+
+    .tools-group h4 {
+      margin-bottom: 0.85rem;
+      font-size: 1rem;
+    }
+
+    .tool-list {
+      display: grid;
+      gap: 0.7rem;
+      list-style: none;
+    }
+
+    .tool-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.75rem;
+      align-items: center;
+      color: #274061;
+      font-size: 0.95rem;
+      padding-bottom: 0.55rem;
+      border-bottom: 1px dashed rgba(16, 32, 62, 0.08);
+    }
+
+    .tool-list li:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .tiny-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.28rem 0.6rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      white-space: nowrap;
+      border: 1px solid rgba(16,32,62,0.08);
+    }
+
+    .tiny-badge.maitrise { background: rgba(74, 222, 128, 0.16); color: #18794e; }
+    .tiny-badge.competent { background: rgba(96, 165, 250, 0.16); color: #2459b7; }
+    .tiny-badge.intermediaire { background: rgba(250, 204, 21, 0.18); color: #8a6a00; }
+
+    @media (max-width: 980px) {
+      .study-grid,
+      .tools-columns { grid-template-columns: 1fr; }
+    }
+
+
+    @media (max-width: 980px) {
+      .tools-columns { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+
+    .brand {
+      gap: 0.7rem;
+      padding: 0.35rem 0.1rem;
+    }
+    .brand-kicker {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.26rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(96,165,250,0.10);
+      border: 1px solid rgba(96,165,250,0.16);
+      color: #3f5f86;
+      font-size: 0.70rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .brand-name {
+      font-size: 1.08rem;
+      letter-spacing: -0.02em;
+      color: #10203e;
+      position: relative;
+      padding-left: 0.9rem;
+    }
+    .brand-name::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 24px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 0 5px rgba(94,234,212,0.08);
+    }
+    .lang-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-right: 0.5rem;
+    }
+    .lang-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      border: 1px solid rgba(16,32,62,0.08);
+      background: rgba(255,255,255,0.78);
+      cursor: pointer;
+      font-size: 1rem;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    }
+    .lang-btn.active,
+    .lang-btn:hover {
+      transform: translateY(-1px);
+      border-color: rgba(96,165,250,0.28);
+      box-shadow: 0 10px 20px rgba(96,165,250,0.12);
+    }
+    .study-detail-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    .study-detail-block {
+      padding: 1.25rem 1.3rem;
+    }
+    .study-detail-block ul {
+      list-style: none;
+      display: grid;
+      gap: 0.75rem;
+    }
+    .study-detail-block li {
+      position: relative;
+      padding-left: 1rem;
+      line-height: 1.7;
+    }
+    .study-detail-block li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 800;
+    }
+    .study-detail-block p {
+      line-height: 1.78;
+      max-width: 54ch;
+    }
+    .tools-columns-readable .tools-group {
+      border-radius: 22px;
+      padding: 1.25rem;
+      box-shadow: 0 16px 34px rgba(16,32,62,0.06);
+    }
+    .tools-columns-readable .tool-list {
+      gap: 0.55rem;
+    }
+    .tools-columns-readable .tool-list li {
+      gap: 0.7rem;
+      padding: 0.9rem 0;
+      border-bottom: 1px solid rgba(16,32,62,0.07);
+    }
+    .tool-name {
+      font-size: 1rem;
+      line-height: 1.55;
+      max-width: 18ch;
+    }
+    .tiny-badge {
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.55);
+      padding: 0.38rem 0.7rem;
+    }
+    .exp-plus-grid {
+      margin-top: 1.2rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .exp-plus-grid .plus-item {
+      min-height: 148px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.78), rgba(238,246,255,0.72));
+      border-color: rgba(96,165,250,0.18);
+    }
+    .contact-card-primary {
+      padding: 1.8rem;
+      border-radius: 28px;
+    }
+    .contact-hero {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 1.35rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(16,32,62,0.08);
+    }
+    .contact-intro h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.3rem;
+    }
+    .contact-intro p {
+      color: var(--muted);
+      max-width: 54ch;
+    }
+    .contact-stack {
+      gap: 0.9rem;
+    }
+    .contact-row-card {
+      padding: 1.05rem 1.15rem;
+      background: linear-gradient(180deg, rgba(255,255,255,0.76), rgba(250,252,255,0.66));
+    }
+    .contact-label-strong {
+      display: inline-block;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #557095;
+      margin-bottom: 0.5rem;
+    }
+    .contact-row-main {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+    }
+    .contact-value-large,
+    .contact-value-large a {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #18355e;
+    }
+    .contact-card-secondary {
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-card-secondary::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      opacity: 0.9;
+    }
+    @media (max-width: 860px) {
+      .lang-switch { margin: 0 0 1rem 0; }
+      .contact-hero, .contact-row-main { flex-direction: column; align-items: flex-start; }
+      .exp-plus-grid { grid-template-columns: 1fr; }
+    }
+
+
+
+    .contact-row-link-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .contact-link-card {
+      display: block;
+      padding: 1.05rem 1.15rem;
+      border-radius: inherit;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .contact-link-card:hover {
+      background: linear-gradient(135deg, rgba(94, 234, 212, 0.12), rgba(96, 165, 250, 0.12));
+      transform: translateY(-1px);
+    }
+
+    .contact-link-arrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 999px;
+      background: rgba(94, 234, 212, 0.14);
+      color: #0f6b5f;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-grid {
+      align-items: start;
+    }
+    .contact-card-secondary {
+      align-self: start;
+      height: fit-content;
+      min-height: auto;
+      padding: 1.35rem;
+    }
+    .contact-card-secondary .contact-list {
+      gap: 0.75rem;
+    }
+    .contact-card-secondary .contact-row {
+      padding: 0.95rem 1rem;
+    }
+    .contact-card-secondary .contact-row strong {
+      margin-bottom: 0.35rem;
+    }
+    .contact-row-link-card {
+      background: linear-gradient(135deg, #0a66c2, #0b5cad);
+      border-color: rgba(10, 102, 194, 0.35);
+      box-shadow: 0 14px 28px rgba(10, 102, 194, 0.18);
+    }
+    .contact-link-card,
+    .contact-link-card:hover {
+      background: transparent;
+      transform: none;
+    }
+    .contact-row-link-card .contact-label-strong,
+    .contact-row-link-card .contact-value,
+    .contact-row-link-card .contact-value-large,
+    .contact-row-link-card .contact-value-large a {
+      color: #ffffff;
+    }
+    .contact-row-link-card .contact-row-main {
+      align-items: center;
+    }
+    .contact-row-link-card .contact-link-arrow {
+      background: rgba(255,255,255,0.18);
+      color: #ffffff;
+      border: 1px solid rgba(255,255,255,0.18);
+    }
+    .linkedin-logo-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.16);
+      color: #ffffff;
+      font-weight: 900;
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+      flex-shrink: 0;
+    }
+
+
+    .cv-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+    .cv-card p {
+      margin: 0;
+      color: rgba(234, 242, 255, 0.88);
+      line-height: 1.65;
+    }
+    .cv-download-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      width: fit-content;
+      padding: 0.85rem 1.15rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(98, 214, 255, 0.22), rgba(78, 176, 255, 0.18));
+      border: 1px solid rgba(132, 228, 255, 0.28);
+      color: #f6fbff;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 0 10px 22px rgba(10, 22, 48, 0.22);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+    .cv-download-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 26px rgba(10, 22, 48, 0.28);
+      border-color: rgba(132, 228, 255, 0.42);
+    }
+
+
+    .cv-download-row {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.9rem;
+    }
+    .cv-download-row p {
+      margin: 0;
+      color: rgba(234, 242, 255, 0.9);
+      line-height: 1.65;
+    }
+    .cv-download-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.82rem 1.15rem;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      color: #f6fbff;
+      background: linear-gradient(135deg, rgba(98, 214, 255, 0.22), rgba(78, 176, 255, 0.18));
+      border: 1px solid rgba(132, 228, 255, 0.30);
+      box-shadow: 0 10px 22px rgba(10, 22, 48, 0.22);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+    .cv-download-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 26px rgba(10, 22, 48, 0.28);
+      border-color: rgba(132, 228, 255, 0.42);
+    }
+
+</style>
+</head>
+<body>
+<header class="navbar">
+<div class="container nav-inner">
+<a aria-label="Retour en haut de page" class="brand" href="#accueil">
+<span class="brand-kicker">Cybersecurity</span><span class="brand-name">Dimitri Radulovic</span>
+</a>
+<button aria-controls="navShell" aria-expanded="false" aria-label="Ouvrir le menu" class="menu-toggle" id="menuToggle">
+<span></span>
+</button>
+<div class="nav-shell" id="navShell">
+<ul class="nav-links" id="navLinks">
+<li><a href="#accueil">Accueil</a></li>
+<li><a href="#apropos">À propos</a></li>
+<li><a href="#competences">Compétences</a></li>
+<li><a href="#formation">Parcours</a></li>
+<li><a href="#dossiers">Expériences</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+<div aria-label="Choix de langue" class="lang-switch"><button aria-label="Version française" class="lang-btn active" data-lang="fr" type="button">🇫🇷</button><button aria-label="English version" class="lang-btn" data-lang="en" type="button">🇬🇧</button></div><a class="nav-cta" href="mailto:dimitr.radulovic89@gmail.com">Contact direct</a>
+</div>
+</div>
+</header>
+<main>
+<section class="hero" id="accueil">
+<div class="container hero-grid">
+<div class="hero-copy reveal">
+<p class="eyebrow">Portfolio cybersécurité</p>
+<h1>Analyste<span class="hero-accent">Cybersécurité Junior</span></h1>
+<p class="lead">
+            Je suis Dimitri Radulovic, 24 ans, et je construis mon entrée dans la cybersécurité avec une approche très opérationnelle : gestion des vulnérabilités, coordination de remédiation, analyse de contexte, réponse à incident et sécurisation d’environnements Azure. Je suis disponible sur toute la France, avec une préférence pour Paris et Genève.
+          </p>
+<div class="hero-micro">
+<span class="micro-pill">SecOps</span>
+<span class="micro-pill">Vulnerability Management</span>
+<span class="micro-pill">Incident Response</span>
+<span class="micro-pill">Azure Cloud Security</span>
+<span class="micro-pill">SIEM / Log Analysis</span>
+<span class="micro-pill">Automatisation Python</span>
+</div>
+<div class="hero-actions">
+<a class="button button-primary" href="#dossiers">Voir mes dossiers de compétences</a>
+<a class="button button-secondary" href="#contact">Me contacter</a>
+</div>
+<div class="hero-badges">
+<div class="hero-badge-card">
+<strong>Environnements couverts</strong>
+<span>Azure, R&amp;D industrielle, périmètres internationaux, support bilingue.</span>
+</div>
+<div class="hero-badge-card">
+<strong>Valeur ajoutée</strong>
+<span>Capacité à analyser, prioriser, documenter et faire avancer des sujets sécurité opérationnels.</span>
+</div>
+</div>
+</div>
+<aside aria-label="Résumé du profil" class="hero-panel reveal">
+<div class="panel-window">
+<div class="window-top">
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+</div>
+<div class="window-content">
+<div class="stat-card">
+<p class="stat-label">Positionnement</p>
+<p class="stat-value">SecOps • Vulnerability Management • Réponse à incident</p>
+</div>
+<div class="stat-card">
+<p class="stat-label">Approche</p>
+<p class="stat-value">Analyse, remédiation, coordination, documentation et amélioration continue</p>
+</div>
+<ul class="hero-list">
+<li>Gestion des vulnérabilités sur VM, conteneurs et environnements exposés.</li>
+<li>Participation en war room, collecte de logs et appui aux investigations sur les sites suivis.</li>
+<li>Bonne compréhension des enjeux Azure et de la sécurisation d’environnements cloud en contexte industriel.</li>
+<li>Support opérationnel bilingue, culture du service et communication technique claire.</li>
+</ul>
+</div>
+</div>
+</aside>
+</div>
+</section>
+<section class="section" id="apropos">
+<div class="container">
+<div class="reveal">
+<p class="eyebrow">À propos</p>
+<h2 class="section-title">Un profil opérationnel, structuré et orienté résultats</h2>
+<p class="section-subtitle">
+            Je me positionne sur des missions où l’analyse sécurité, le suivi opérationnel, la réponse à incident et la sécurisation d’environnements cloud ou industriels créent une vraie valeur pour l’entreprise.
+          </p>
+</div>
+<div class="about-grid">
+<article class="card about-text reveal">
+<p>
+              Mon parcours m’a permis de développer une base opérationnelle solide en cybersécurité, avec une exposition à la gestion des vulnérabilités, à l’analyse de constats techniques, à la réponse à incident et à la sécurisation d’environnements Azure au sein d’un contexte industriel international.
+            </p>
+<p>
+              J’ai l’habitude de transformer des résultats techniques en actions exploitables : qualifier un risque, l’expliquer clairement, suivre sa remédiation et coordonner les interlocuteurs nécessaires jusqu’à obtention d’un résultat traçable.
+            </p>
+<p>
+              Au-delà de la technique, j’apporte une posture fiable, impliquée et orientée résultats, avec un vrai souci du détail, de la documentation et de la qualité d’exécution. Mon objectif est d’intégrer une équipe cyber dans laquelle je pourrai être rapidement utile et continuer à monter en puissance.
+            </p>
+<div class="plus-grid">
+<div class="plus-item">
+<strong>Vision opérationnelle</strong>
+<p>Lecture de vulnérabilités, suivi de remédiation, priorisation et coordination terrain.</p>
+</div>
+<div class="plus-item">
+<strong>Culture cloud &amp; sécurité</strong>
+<p>Bonne compréhension d’Azure, des enjeux d’exposition et des mesures de sécurisation associées.</p>
+</div>
+<div class="plus-item">
+<strong>Réponse à incident</strong>
+<p>Participation à des scénarios et exercices, avec compréhension des réflexes de containment et d’escalade.</p>
+</div>
+<div class="plus-item">
+<strong>Fiabilité professionnelle</strong>
+<p>Communication claire, anglais professionnel, rigueur documentaire et sens des priorités.</p>
+</div>
+</div>
+</article>
+<aside class="card reveal">
+<ul class="about-points">
+<li>
+<strong>Ce que je recherche</strong>
+                Un premier CDI en cybersécurité opérationnelle, SecOps, réponse à incident ou Azure security, avec des responsabilités concrètes sur l’analyse, le traitement et l’amélioration de la posture de sécurité.
+              </li>
+<li>
+<strong>Ce que j’apporte</strong>
+                Une capacité à structurer un suivi sécurité, prioriser des actions, coordonner plusieurs interlocuteurs et contribuer à des sujets mêlant technique, organisation et exigences opérationnelles.
+              </li>
+<li>
+<strong>Ma démarche</strong>
+                Comprendre l’environnement, qualifier les constats, proposer des actions réalistes et assurer un suivi sérieux jusqu’à la remédiation ou à la bonne escalade.
+              </li>
+</ul>
+</aside>
+</div>
+</div>
+</section>
+<section class="section" id="competences">
+<div class="container">
+<div class="reveal">
+<p class="eyebrow">Compétences clés</p>
+<h2 class="section-title">Ce que je mets en œuvre dans mes missions</h2>
+<p class="section-subtitle">
+            Compétences appliquées à des contextes réels : SecOps, Azure, réponse à incident, support opérationnel, industrialisation et gestion structurée du risque.
+          </p>
+</div>
+<div class="skills-grid">
+<article class="skill-card reveal">
+<h3>SecOps</h3>
+<ul>
+<li>Analyse opérationnelle de sujets sécurité avec lecture du contexte et des impacts associés</li>
+<li>Qualification, escalade et suivi de tickets jusqu’à résolution ou arbitrage</li>
+<li>Coordination transverse avec équipes techniques, métiers et responsables de périmètre</li>
+<li>Production d’un reporting clair, exploitable et utile au pilotage sécurité</li>
+</ul>
+</article>
+<article class="skill-card reveal">
+<h3>Vulnerability Management</h3>
+<ul>
+<li>Lecture, qualification et consolidation de résultats issus de scans Qualys, Nessus, Tenable ou OpenVAS</li>
+<li>Priorisation selon criticité CVE, exposition réelle, contexte technique et contraintes d’environnement</li>
+<li>Suivi de remédiation, relances ciblées et collecte de preuves de correction</li>
+<li>Pilotage structuré d’un backlog sécurité dans une logique de réduction durable du risque</li>
+</ul>
+</article>
+<article class="skill-card reveal">
+<h3>Incident Response</h3>
+<ul>
+<li>Participation à des scénarios et exercices de gestion d’incident</li>
+<li>Compréhension des phases d’identification, containment, remédiation et retour d’expérience</li>
+<li>Lecture d’éléments de contexte techniques pour qualifier l’impact et l’urgence</li>
+<li>Capacité à documenter clairement les actions et à faciliter l’escalade</li>
+</ul>
+</article>
+<article class="skill-card reveal">
+<h3>Azure Cloud Security</h3>
+<ul>
+<li>Compréhension de l’environnement Microsoft Azure et de ses enjeux de sécurisation</li>
+<li>Vision des ressources cloud, des VM, des conteneurs et de la surface d’exposition associée</li>
+<li>Sensibilisation à Microsoft Defender for Cloud, à la visibilité des actifs et aux bonnes pratiques de sécurité</li>
+<li>Capacité à intégrer les contraintes cloud dans l’analyse et la remédiation sécurité</li>
+</ul>
+</article>
+<article class="skill-card reveal">
+<h3>Infrastructure &amp; sécurité réseau</h3>
+<ul>
+<li>Lecture d’environnements systèmes, réseau et postes de travail dans des contextes hétérogènes</li>
+<li>Compréhension des enjeux de segmentation, de contrôle de flux et de réduction de surface d’attaque</li>
+<li>Interaction avec Active Directory, Windows Server, inventaires techniques et outils de visibilité d’actifs</li>
+<li>Capacité à comprendre rapidement une architecture IT pour adapter l’action sécurité</li>
+</ul>
+</article>
+<article class="skill-card reveal">
+<h3>Industrialisation &amp; outils</h3>
+<ul>
+<li>Structuration de suivis Jira / Confluence pour améliorer la traçabilité et la gouvernance des actions</li>
+<li>Automatisation Python de tâches répétitives à faible valeur ajoutée</li>
+<li>Traitement et fiabilisation de données via Excel, Pandas, Openpyxl et APIs</li>
+<li>Démarche orientée standardisation, gain de temps et sécurisation des processus</li>
+</ul>
+</article>
+</div>
+</div>
+</section>
+<section class="section" id="formation">
+<div class="container">
+<div class="reveal">
+<p class="eyebrow">Parcours</p>
+<h2 class="section-title">Formation, logiciels maîtrisés et langues</h2>
+<p class="section-subtitle">Un parcours construit autour des systèmes, des réseaux, du support IT et de la cybersécurité opérationnelle, avec une progression logique vers des missions de plus en plus orientées sécurité.</p>
+</div>
+<div class="study-grid"><article class="case-card reveal study-card">
+<div class="case-summary">
+<div class="case-top">
+<div>
+<span class="timeline-year">2025</span>
+<h3>Bachelor Administration Systèmes &amp; Réseaux (ASR)</h3>
+<p class="case-meta">CESI — Grenoble, France</p>
+<div class="meta-line"><span class="meta-pill">Systèmes &amp; réseaux</span><span class="meta-pill">Cybersécurité</span></div>
+</div>
+<div class="case-actions"><button aria-controls="study-asr" aria-expanded="false" class="toggle-button" type="button">Voir le détail</button></div>
+</div>
+</div>
+<div class="case-detail study-detail" id="study-asr">
+<div class="case-detail-inner">
+<div class="case-detail-content">
+<div class="detail-grid study-detail-grid">
+<section class="detail-block study-detail-block">
+<h4 class="detail-kicker">Apprentissages</h4>
+<ul><li>Administration systèmes et réseaux dans des environnements structurés.</li><li>Approche plus complète de la cybersécurité appliquée aux infrastructures.</li><li>Vision plus opérationnelle de la sécurisation des environnements IT.</li><li>Méthode de travail plus rigoureuse sur les sujets techniques et projet.</li></ul>
+</section>
+<section class="detail-block study-detail-block">
+<h4 class="detail-kicker">Pourquoi ce diplôme</h4>
+<p>J’ai choisi ce bachelor pour relier mes bases techniques en systèmes et réseaux à une logique de sécurisation concrète des infrastructures. Il me permet d’aller vers un profil plus complet, capable de comprendre un environnement IT tout en y apporter une lecture cyber utile.</p>
+</section>
+</div>
+</div>
+</div>
+</div>
+</article><article class="case-card reveal study-card">
+<div class="case-summary">
+<div class="case-top">
+<div>
+<span class="timeline-year">2024</span>
+<h3>Diplôme professionnel Gestion du Support Informatique (GMSI)</h3>
+<p class="case-meta">CESI — Grenoble, France</p>
+<div class="meta-line"><span class="meta-pill">Support IT</span><span class="meta-pill">Production</span></div>
+</div>
+<div class="case-actions"><button aria-controls="study-gmsi" aria-expanded="false" class="toggle-button" type="button">Voir le détail</button></div>
+</div>
+</div>
+<div class="case-detail study-detail" id="study-gmsi">
+<div class="case-detail-inner">
+<div class="case-detail-content">
+<div class="detail-grid study-detail-grid">
+<section class="detail-block study-detail-block">
+<h4 class="detail-kicker">Apprentissages</h4>
+<ul><li>Gestion du support, des incidents et des demandes utilisateurs.</li><li>Organisation, priorisation et traçabilité des actions techniques.</li><li>Communication professionnelle avec des interlocuteurs variés.</li><li>Compréhension des contraintes de service, de production et de continuité.</li></ul>
+</section>
+<section class="detail-block study-detail-block">
+<h4 class="detail-kicker">Pourquoi ce diplôme</h4>
+<p>Ce diplôme m’a permis de renforcer mes réflexes d’exploitation, ma rigueur de traitement et ma capacité à suivre un service dans la durée. Je l’ai choisi pour consolider une base opérationnelle solide avant de pousser plus loin ma spécialisation vers la cybersécurité.</p>
+</section>
+</div>
+</div>
+</div>
+</div>
+</article><article class="case-card reveal study-card">
+<div class="case-summary">
+<div class="case-top">
+<div>
+<span class="timeline-year">2022</span>
+<h3>DUT Réseaux &amp; Télécommunications</h3>
+<p class="case-meta">Université Grenoble Alpes — Grenoble, France</p>
+<div class="meta-line"><span class="meta-pill">Réseaux</span><span class="meta-pill">Télécoms</span><span class="meta-pill">Sportif haut niveau</span></div>
+</div>
+<div class="case-actions"><button aria-controls="study-dut" aria-expanded="false" class="toggle-button" type="button">Voir le détail</button></div>
+</div>
+</div>
+<div class="case-detail study-detail" id="study-dut">
+<div class="case-detail-inner">
+<div class="case-detail-content">
+<div class="detail-grid study-detail-grid">
+<section class="detail-block study-detail-block">
+<h4 class="detail-kicker">Apprentissages</h4>
+<ul><li>Fondamentaux réseaux, adressage, services et architecture.</li><li>Bases en systèmes, télécommunications et fonctionnement d’infrastructures.</li><li>Capacité à lire un environnement technique dans sa globalité.</li><li>Développement d’une logique d’analyse utile ensuite en cybersécurité.</li><li>Gestion d’un double projet études / sport grâce au parcours étudiant sportif de haut niveau en football américain.</li></ul>
+</section>
+<section class="detail-block study-detail-block">
+<h4 class="detail-kicker">Pourquoi ce diplôme</h4>
+<p>J’ai choisi ce DUT pour acquérir une compréhension technique globale des réseaux, des télécommunications et des systèmes, tout en m’inscrivant dans un rythme exigeant grâce au parcours étudiant sportif de haut niveau en football américain. Cette étape a structuré ma discipline de travail et posé les bases de mon orientation vers la cybersécurité.</p>
+</section>
+</div>
+</div>
+</div>
+</div>
+</article></div>
+<div class="matrix-grid" style="margin-top: 1.5rem;">
+<article class="case-card reveal tools-card">
+<div class="case-summary">
+<div class="case-top">
+<div>
+<p class="eyebrow">Outils</p>
+<h3>Logiciels maîtrisés</h3>
+<p class="case-meta">Vue structurée des outils réellement utilisés, classés par niveau de maîtrise.</p>
+</div>
+<div class="case-actions"><button aria-controls="tools-detail" aria-expanded="false" class="toggle-button" type="button">Voir le détail</button></div>
+</div>
+</div>
+<div class="case-detail" id="tools-detail">
+<div class="case-detail-inner">
+<div class="case-detail-content">
+<div class="tools-columns tools-columns-readable">
+<section class="tools-group">
+<h4>Maîtrisé</h4>
+<ul class="tool-list"><li><span class="tool-name">Jira / Confluence</span><span class="tiny-badge maitrise">Maîtrisé</span></li><li><span class="tool-name">Excel avancé</span><span class="tiny-badge maitrise">Maîtrisé</span></li><li><span class="tool-name">ServiceNow Front &amp; Back Office</span><span class="tiny-badge maitrise">Maîtrisé</span></li></ul>
+</section>
+<section class="tools-group">
+<h4>Compétent</h4>
+<ul class="tool-list"><li><span class="tool-name">Python / Pandas / Openpyxl</span><span class="tiny-badge competent">Compétent</span></li><li><span class="tool-name">Qualys / Nessus / Tenable / OpenVAS</span><span class="tiny-badge competent">Compétent</span></li><li><span class="tool-name">Active Directory</span><span class="tiny-badge competent">Compétent</span></li><li><span class="tool-name">Windows Server</span><span class="tiny-badge competent">Compétent</span></li><li><span class="tool-name">Kibana / SIEM</span><span class="tiny-badge competent">Compétent</span></li></ul>
+</section>
+<section class="tools-group">
+<h4>Intermédiaire</h4>
+<ul class="tool-list"><li><span class="tool-name">Microsoft Azure</span><span class="tiny-badge intermediaire">Intermédiaire</span></li><li><span class="tool-name">Microsoft Defender for Cloud</span><span class="tiny-badge intermediaire">Intermédiaire</span></li><li><span class="tool-name">Kubernetes</span><span class="tiny-badge intermediaire">Intermédiaire</span></li><li><span class="tool-name">APIs REST</span><span class="tiny-badge intermediaire">Intermédiaire</span></li></ul>
+</section>
+</div>
+</div>
+</div>
+</div>
+</article>
+
+<article class="card reveal">
+<p class="eyebrow">Profil</p>
+<h3 style="margin-bottom: 1rem;">Langues</h3>
+<div class="language-list">
+<div class="language-item">
+<div class="language-top"><strong>Français</strong><span>Maternelle</span></div>
+<div class="language-bar"><i style="width: 100%"></i></div>
+</div>
+<div class="language-item">
+<div class="language-top"><strong>Anglais</strong><span>Courant professionnel</span></div>
+<div class="language-bar"><i style="width: 82%"></i></div>
+</div>
+<div class="language-item">
+<div class="language-top"><strong>Espagnol</strong><span>Intermédiaire (B2)</span></div>
+<div class="language-bar"><i style="width: 62%"></i></div>
+</div>
+<div class="language-item">
+<div class="language-top"><strong>Serbe</strong><span>Intermédiaire (B2)</span></div>
+<div class="language-bar"><i style="width: 62%"></i></div>
+</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section class="section" id="dossiers">
+<div class="container">
+<div class="reveal">
+<p class="eyebrow">Dossiers de compétences</p>
+<h2 class="section-title">Expériences professionnelles et dossiers de compétences</h2>
+<p class="section-subtitle">Un aperçu concret de mes expériences terrain, de mes responsabilités opérationnelles et de la manière dont j’apporte de la méthode, du suivi et de la valeur sur des sujets cybersécurité.</p>
+</div>
+<div class="portfolio-intro reveal">Vous trouverez ci-dessous des missions structurées autour d’actions réellement menées : gestion des vulnérabilités, coordination de remédiation, support technique exigeant, premiers réflexes SecOps, participation à la réponse à incident et travail sur des environnements industriels internationaux.</div>
+<div class="case-list">
+<article class="case-card reveal open" id="case-schneider">
+<div class="case-summary">
+<div class="case-top">
+<div>
+<h3>Schneider Electric — Junior Cybersecurity Analyst</h3>
+<p class="case-meta">SecOps / Vulnerability Management — Environnement industriel international</p>
+<div class="meta-line">
+<span class="meta-pill">2022 — 2025</span>
+<span class="meta-pill">Grenoble / périmètre international</span>
+</div>
+</div>
+<div class="case-tags"><span class="tag">Qualys</span><span class="tag">Nessus</span><span class="tag">Jira</span><span class="tag">Kibana</span></div>
+</div>
+<p class="case-highlight">Sur ce poste, j’ai contribué à renforcer la posture de sécurité d’environnements R&amp;D industriels en travaillant sur la gestion des vulnérabilités, l’analyse de constats techniques, la coordination de remédiations et l’appui aux sujets de réponse à incident sur les sites de mon périmètre.</p>
+<div class="case-actions">
+<button aria-controls="detail-schneider" aria-expanded="true" class="toggle-button" type="button">
+                  Voir moins
+                </button>
+</div>
+</div>
+<div class="case-detail" id="detail-schneider">
+<div class="case-detail-inner">
+<div class="case-detail-content">
+<div class="detail-grid">
+<section class="detail-block">
+<h4>Contexte</h4>
+<p>
+                        Intervention sur un périmètre R&amp;D industriel sensible dans un contexte international, avec des enjeux forts de visibilité, de réduction de surface d’attaque, de coordination multi-équipes et de suivi rigoureux des actions sécurité.
+                      </p>
+</section>
+<section class="detail-block">
+<h4>Missions principales</h4>
+<ul>
+<li>Analyse de vulnérabilités sur VM, conteneurs et actifs exposés.</li>
+<li>Qualification des CVE, priorisation selon le contexte et pilotage des remédiations.</li>
+<li>Lecture de rapports de tests d’intrusion et transformation des constats en plans d’actions.</li>
+<li>Contribution à des sujets de réduction d’exposition externe, de segmentation et de sécurisation d’actifs critiques.</li>
+</ul>
+</section>
+<section class="detail-block">
+<h4>Incident Response</h4>
+<ul><li>Participation aux war rooms sur les incidents touchant les sites dont j’étais responsable.</li><li>Collecte et consolidation de logs utiles à l’analyse et au suivi des incidents.</li><li>Appui opérationnel aux investigations en fournissant des éléments de contexte et de traçabilité.</li><li>Contribution au suivi des actions et à la coordination avec les équipes concernées.</li></ul>
+</section>
+<section class="detail-block">
+<h4>Outils &amp; environnement</h4>
+<ul><li>Qualys, Nessus, Jira, Confluence</li><li>Python, Pandas, Openpyxl, APIs REST</li><li>Kibana / analyse de logs / Active Directory</li><li>Référentiels ISO 27001, NIST, IEC 62443</li></ul>
+</section>
+<section class="detail-block">
+<h4>Valeur ajoutée</h4>
+<div class="plus-grid" style="margin-top:0;">
+<div class="plus-item"><strong>Réduction du risque</strong><p>Suivi plus fiable des vulnérabilités et priorisation plus cohérente des remédiations.</p></div>
+<div class="plus-item"><strong>Vision transverse</strong><p>Capacité à faire le lien entre constats techniques, contraintes terrain et décisions opérationnelles.</p></div>
+<div class="plus-item"><strong>Industrialisation</strong><p>Automatisation et structuration du suivi pour gagner en efficacité et en traçabilité.</p></div>
+<div class="plus-item"><strong>Impact concret</strong><p>Contribution à l’amélioration durable de la posture de sécurité sur des environnements sensibles.</p></div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="case-card reveal" id="case-experis">
+<div class="case-summary">
+<div class="case-top">
+<div>
+<h3>Experis France — Technicien Support Informatique N0</h3>
+<p class="case-meta">Support utilisateur — Client luxe Dior</p>
+<div class="meta-line">
+<span class="meta-pill">2022</span>
+<span class="meta-pill">Grenoble</span>
+</div>
+</div>
+<div class="case-tags">
+<span class="tag">Active Directory</span>
+<span class="tag">Windows Server</span>
+<span class="tag">ServiceNow</span>
+<span class="tag">Anglais</span>
+</div>
+</div>
+<p class="case-highlight">
+                Une expérience de support premium, majoritairement en anglais, qui m’a permis de consolider mon bagage opérationnel et technique dans un environnement exigeant où la qualité d’exécution et la communication sont essentielles.
+              </p>
+<div class="case-actions">
+<button aria-controls="detail-experis" aria-expanded="false" class="toggle-button" type="button">
+                  Voir le dossier
+                </button>
+</div>
+</div>
+<div class="case-detail" id="detail-experis">
+<div class="case-detail-inner">
+<div class="case-detail-content">
+<div class="detail-grid">
+<section class="detail-block">
+<h4>Contexte</h4>
+<p>
+                        Support N0 pour le client luxe Dior dans un environnement orienté qualité de service, réactivité et relation utilisateur, avec un usage majoritaire de l’anglais dans les échanges et la prise en charge des demandes.
+                      </p>
+</section>
+<section class="detail-block">
+<h4>Missions principales</h4>
+<ul>
+<li>Support utilisateurs de premier niveau en français et en anglais.</li>
+<li>Qualification, traitement et suivi des incidents et demandes utilisateurs.</li>
+<li>Utilisation d’Active Directory et de Windows Server pour les opérations courantes liées au support.</li>
+<li>Gestion des tickets via ServiceNow en front et back office.</li>
+</ul>
+</section>
+<section class="detail-block">
+<h4>Compétences démontrées</h4>
+<ul>
+<li>Diagnostic rapide, sens du service et bonne priorisation des demandes.</li>
+<li>Communication professionnelle en anglais dans un contexte exigeant.</li>
+<li>Rigueur dans le suivi, l’escalade et la traçabilité des actions menées.</li>
+<li>Consolidation du bagage opérationnel et technique sur des environnements Windows.</li>
+</ul>
+</section>
+<section class="detail-block">
+<h4>Outils &amp; environnement</h4>
+<ul>
+<li>Active Directory</li>
+<li>Windows Server</li>
+<li>ServiceNow Front Office / Back Office</li>
+<li>Support premium en environnement international</li>
+</ul>
+</section>
+<section class="detail-block">
+<h4>Ce que cette expérience m’a apporté</h4>
+<p>
+                        Cette mission a renforcé ma qualité d’exécution, ma capacité à travailler sous contrainte de service et mon aisance dans la communication technique. Elle a aussi consolidé mon bagage opérationnel et technique, utile aujourd’hui pour traiter des sujets cyber avec sérieux et méthode.
+                      </p>
+</section>
+<section class="detail-block">
+<h4>Valeur ajoutée</h4>
+<p>
+                        J’y ai développé une posture fiable, professionnelle et orientée utilisateur, avec une vraie rigueur dans le traitement des demandes — des qualités directement transférables à des environnements SecOps, support sécurité ou gestion d’incidents.
+                      </p>
+<div class="plus-grid exp-plus-grid">
+<div class="plus-item"><strong>Culture service</strong><p>Renforcement d’une qualité d’exécution fiable dans un contexte premium et exigeant.</p></div>
+<div class="plus-item"><strong>Communication bilingue</strong><p>Aisance en anglais dans le traitement d’incidents et les échanges techniques.</p></div>
+<div class="plus-item"><strong>Rigueur opérationnelle</strong><p>Suivi propre des tickets, escalades utiles et traçabilité des actions.</p></div>
+<div class="plus-item"><strong>Base technique solide</strong><p>Consolidation des réflexes Windows, AD et ServiceNow transférables à la cyber.</p></div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="case-card reveal" id="case-schneider-intern">
+<div class="case-summary">
+<div class="case-top">
+<div>
+<h3>Schneider Electric — Security Operations Intern</h3>
+<p class="case-meta">Stage de découverte en cybersécurité</p>
+<div class="meta-line">
+<span class="meta-pill">2022</span>
+<span class="meta-pill">Grenoble — Intencity</span>
+</div>
+</div>
+<div class="case-tags">
+<span class="tag">Qualys</span>
+<span class="tag">Azure</span>
+<span class="tag">SecOps</span>
+<span class="tag">Incident</span>
+</div>
+</div>
+<p class="case-highlight">Première immersion concrète dans un environnement SecOps industriel, avec des travaux sur le vulnerability management, la lecture d’un environnement Azure critique et la participation à une simulation de réponse à incident sur la plateforme Ecostruxure Technology Platform.</p>
+<div class="case-actions">
+<button aria-controls="detail-schneider-intern" aria-expanded="false" class="toggle-button" type="button">
+                  Voir le dossier
+                </button>
+</div>
+</div>
+<div class="case-detail" id="detail-schneider-intern">
+<div class="case-detail-inner">
+<div class="case-detail-content">
+<div class="detail-grid">
+<section class="detail-block">
+<h4>Contexte</h4>
+<p>
+                        Stage réalisé au sein de l’équipe SecOps de Schneider Electric sur la plateforme ETP, un environnement IoT hébergé sur Microsoft Azure et considéré comme critique pour l’entreprise.
+                      </p>
+</section>
+<section class="detail-block">
+<h4>Réalisations</h4>
+<ul><li>Recherche des propriétaires de VM et préparation de rapports de vulnérabilités.</li><li>Mise en forme et envoi de rapports pour faciliter le suivi des remédiations.</li><li>Suivi du patching et du nombre de vulnérabilités sur les machines virtuelles.</li><li>Participation à la préparation et au déroulement d’une simulation d’incident cyber.</li></ul>
+</section>
+<section class="detail-block">
+<h4>Outils &amp; environnement</h4>
+<ul><li>Qualys</li><li>Microsoft Azure / VM / clusters Kubernetes</li><li>Microsoft Defender for Cloud / SIEM Schneider</li><li>Documentation de suivi et coordination SecOps</li></ul>
+</section>
+<section class="detail-block">
+<h4>Compétences développées</h4>
+<ul><li>Compréhension pratique du cycle de gestion des vulnérabilités.</li><li>Lecture d’un environnement cloud Azure et de la criticité associée aux actifs.</li><li>Premiers réflexes en réponse à incident et en structuration de scénarios.</li><li>Rigueur dans la documentation, la recherche d’information et la communication.</li></ul>
+</section>
+<section class="detail-block">
+<h4>Valeur ajoutée</h4>
+<p>Ce stage a posé des bases solides dans mon parcours cyber : compréhension du vulnerability management, découverte concrète d’Azure security et exposition à la logique de réponse à incident dans un contexte industriel exigeant.</p>
+<div class="plus-grid exp-plus-grid">
+<div class="plus-item"><strong>Lecture cyber</strong><p>Première compréhension concrète du cycle vulnérabilités → priorisation → remédiation.</p></div>
+<div class="plus-item"><strong>Culture cloud</strong><p>Découverte opérationnelle d’Azure, Defender for Cloud et de l’exposition des actifs.</p></div>
+<div class="plus-item"><strong>Réflexes incident</strong><p>Participation à une simulation avec logique de coordination, documentation et escalade.</p></div>
+<div class="plus-item"><strong>Posture SecOps</strong><p>Apprentissage d’une méthode de travail rigoureuse dans un environnement industriel critique.</p></div>
+</div>
+</section>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section class="section" id="contact">
+<div class="container">
+<div class="reveal">
+<p class="eyebrow">Contact</p>
+<h2 class="section-title">Me contacter facilement</h2>
+<p class="section-subtitle">
+            Disponible pour échanger sur une opportunité en cybersécurité opérationnelle, SecOps, Azure security, gestion des vulnérabilités ou réponse à incident.
+          </p>
+</div>
+<div class="contact-grid">
+<article class="card reveal contact-card-primary">
+<div class="contact-hero">
+<div class="contact-intro">
+<h3>Coordonnées directes</h3>
+<p>Un accès rapide à mes informations de contact pour faciliter une prise d’échange, un appel ou l’envoi direct d’une opportunité.</p>
+</div>
+<p class="availability">Disponible</p>
+</div>
+<ul class="contact-list contact-stack">
+<li class="contact-row contact-row-card">
+<span id="contactLabelName" class="contact-label-strong" data-fr="Nom" data-en="Name">Nom</span>
+<div class="contact-row-main">
+<span class="contact-value contact-value-large">Dimitri Radulovic</span>
+</div>
+</li>
+<li class="contact-row contact-row-card">
+<span id="contactLabelEmail" class="contact-label-strong" data-fr="Mail" data-en="Email">Mail</span>
+<div class="contact-row-main">
+<span class="contact-value contact-value-large"><a href="mailto:dimitr.radulovic89@gmail.com">dimitr.radulovic89@gmail.com</a></span>
+<button class="copy-button" data-copy="dimitr.radulovic89@gmail.com" type="button">Copier</button>
+</div>
+</li>
+<li class="contact-row contact-row-card">
+<span id="contactLabelPhone" class="contact-label-strong" data-fr="Numéro" data-en="Phone">Numéro</span>
+<div class="contact-row-main">
+<span class="contact-value contact-value-large"><a href="tel:+33629430623">+33 6 29 43 06 23</a></span>
+<button class="copy-button" data-copy="+33 6 29 43 06 23" type="button">Copier</button>
+</div>
+</li>
+<li class="contact-row contact-row-card contact-row-link-card"><a class="contact-link-card" href="https://www.linkedin.com/in/dimitri-radulovic-9ba54b209" rel="noopener noreferrer" target="_blank"><div class="contact-row-main"><div style="display:flex;align-items:center;gap:.85rem;"><span aria-hidden="true" class="linkedin-logo-badge">in</span><span class="contact-value contact-value-large"><span data-fr="Voir mon profil LinkedIn" data-en="View my LinkedIn profile">Voir mon profil LinkedIn</span></span></div><span aria-hidden="true" class="contact-link-arrow">↗</span></div></a></li>
+</ul>
+</article>
+<article class="card reveal version-card contact-card-secondary">
+<ul class="contact-list">
+<li class="contact-row">
+<strong>Positionnement</strong>
+                Analyste cybersécurité junior orienté SecOps, gestion des vulnérabilités, Azure cloud security et réponse à incident.
+              </li>
+<li class="contact-row">
+<strong>Valeur apportée</strong>
+                Rigueur, sens du suivi, capacité d’analyse, communication claire et vraie volonté d’apporter une valeur opérationnelle à une équipe cyber.
+              </li>
+
+<li class="contact-row cv-download-row">
+<strong data-fr="Télécharger mon CV" data-en="Download my resume">Télécharger mon CV</strong>
+<p data-fr="Téléchargez mon CV PDF pour consulter mon parcours, mes expériences et mes compétences."
+   data-en="Download my PDF resume to review my background, experience, and skills.">Téléchargez mon CV PDF pour consulter mon parcours, mes expériences et mes compétences.</p>
+<a class="cv-download-btn" href="CV_FR_RADULOVIC_Dimitri.pdf" download data-fr="Télécharger le CV" data-en="Download resume">Télécharger le CV</a>
+</li>
+
+<li class="contact-row"><strong>Version</strong><span class="version-pill">V1.1.5</span></li>
+</ul>
+</article>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="container">
+<p>© <span id="year"></span> Dimitri Radulovic — Portfolio cybersécurité</p>
+</div>
+</footer>
+<script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navShell = document.getElementById('navShell');
+    const navLinks = document.querySelectorAll('#navLinks a');
+    const body = document.body;
+
+    if (menuToggle) {
+      menuToggle.addEventListener('click', () => {
+        const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        menuToggle.setAttribute('aria-expanded', String(!expanded));
+        navShell.classList.toggle('open');
+        body.classList.toggle('menu-open');
+      });
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 860) {
+          navShell.classList.remove('open');
+          body.classList.remove('menu-open');
+          menuToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+
+    const sections = document.querySelectorAll('main section[id]');
+    const navItems = document.querySelectorAll('#navLinks a');
+
+    const setActiveLink = () => {
+      const scrollY = window.scrollY + 140;
+      let currentId = '';
+
+      sections.forEach(section => {
+        const top = section.offsetTop;
+        const height = section.offsetHeight;
+        if (scrollY >= top && scrollY < top + height) {
+          currentId = section.id;
+        }
+      });
+
+      navItems.forEach(item => {
+        item.classList.toggle('active', item.getAttribute('href') === `#${currentId}`);
+      });
+    };
+
+    window.addEventListener('scroll', setActiveLink);
+    window.addEventListener('load', setActiveLink);
+
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    reveals.forEach(el => revealObserver.observe(el));
+
+    const caseCards = document.querySelectorAll('.case-card');
+
+    const setCardButtonLabel = (card) => {
+      const button = card.querySelector('.toggle-button');
+      if (!button) return;
+      const lang = document.documentElement.lang || 'fr';
+
+      if (card.classList.contains('study-card') || card.classList.contains('tools-card')) {
+        button.textContent = card.classList.contains('open')
+          ? (lang === 'en' ? 'Show less' : 'Voir moins')
+          : (lang === 'en' ? 'Open details' : 'Voir le dossier');
+        return;
+      }
+
+      button.textContent = card.classList.contains('open')
+        ? (lang === 'en' ? 'Show less' : 'Voir moins')
+        : (lang === 'en' ? 'Open case study' : 'Voir le dossier');
+    };
+
+    caseCards.forEach(card => {
+      const button = card.querySelector('.toggle-button');
+      if (!button) return;
+
+      setCardButtonLabel(card);
+
+      button.addEventListener('click', () => {
+        const isOpen = card.classList.contains('open');
+
+        if (card.classList.contains('study-card') && !isOpen) {
+          document.querySelectorAll('.study-card.open').forEach(otherCard => {
+            if (otherCard === card) return;
+            otherCard.classList.remove('open');
+            const otherButton = otherCard.querySelector('.toggle-button');
+            if (otherButton) otherButton.setAttribute('aria-expanded', 'false');
+            setCardButtonLabel(otherCard);
+          });
+        }
+
+        card.classList.toggle('open');
+        button.setAttribute('aria-expanded', String(!isOpen));
+        setCardButtonLabel(card);
+      });
+    });
+
+    const copyButtons = document.querySelectorAll('.copy-button');
+
+    copyButtons.forEach(button => {
+      button.addEventListener('click', async () => {
+        const value = button.getAttribute('data-copy') || '';
+        if (!value) return;
+
+        try {
+          await navigator.clipboard.writeText(value);
+          const previous = button.textContent;
+          button.textContent = (document.documentElement.lang === 'en' ? 'Copied ✓' : 'Copié ✓');
+          button.classList.add('copied');
+
+          setTimeout(() => {
+            button.textContent = previous;
+            button.classList.remove('copied');
+          }, 1200);
+        } catch (error) {
+          button.textContent = (document.documentElement.lang === 'en' ? 'Error' : 'Erreur');
+          setTimeout(() => {
+            button.textContent = (document.documentElement.lang === 'en' ? 'Copy' : 'Copier');
+          }, 1200);
+        }
+      });
+    });
+
+    
+
+    const langButtons = document.querySelectorAll('.lang-btn');
+    const translations = {
+      fr: {
+        nav: ['Accueil','À propos','Compétences','Parcours','Expériences','Contact'],
+        cta: 'Contact direct',
+        heroLead: 'Je suis Dimitri Radulovic, 24 ans, et je construis mon entrée dans la cybersécurité avec une approche très opérationnelle : gestion des vulnérabilités, coordination de remédiation, analyse de contexte, réponse à incident et sécurisation d’environnements Azure. Je suis disponible sur toute la France, avec une préférence pour Paris et Genève.',
+        heroButtons: ['Voir mes dossiers de compétences','Me contacter'],
+        studyClosed: 'Voir le dossier',
+        studyOpen: 'Voir moins',
+        caseClosed: 'Voir le dossier',
+        caseOpen: 'Voir moins',
+        copy: 'Copier',
+        copied: 'Copié ✓',
+        error: 'Erreur'
+      },
+      en: {
+        nav: ['Home','About','Skills','Background','Experience','Contact'],
+        cta: 'Direct contact',
+        heroLead: 'I am Dimitri Radulovic, 24, building my entry into cybersecurity with a strongly operational mindset: vulnerability management, remediation coordination, contextual analysis, incident response, and Azure environment hardening. I am available across France, with a preference for Paris and Geneva.',
+        heroButtons: ['View my skill case studies','Contact me'],
+        studyClosed: 'Open details',
+        studyOpen: 'Show less',
+        caseClosed: 'Open case study',
+        caseOpen: 'Show less',
+        copy: 'Copy',
+        copied: 'Copied ✓',
+        error: 'Error'
+      }
+    };
+
+    const applySelectorMap = (map) => {
+      map.forEach(([selector, value]) => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(el => {
+          if (el.tagName === 'META') {
+            el.setAttribute('content', value);
+          } else {
+            el.innerHTML = value;
+          }
+        });
+      });
+    };
+
+    const updateToggleButtonsByLanguage = (lang) => {
+      document.querySelectorAll('.case-card').forEach(card => {
+        const btn = card.querySelector('.toggle-button');
+        if (!btn) return;
+
+        if (card.classList.contains('study-card') || card.classList.contains('tools-card')) {
+          btn.textContent = card.classList.contains('open') ? translations[lang].studyOpen : translations[lang].studyClosed;
+        } else {
+          btn.textContent = card.classList.contains('open') ? translations[lang].caseOpen : translations[lang].caseClosed;
+        }
+      });
+    };
+
+    const applyLanguage = (lang) => {
+      document.documentElement.lang = lang;
+      document.querySelectorAll('#navLinks a').forEach((a,i) => { if (translations[lang].nav[i]) a.textContent = translations[lang].nav[i]; });
+
+      const navCta = document.querySelector('.nav-cta');
+      if (navCta) navCta.textContent = translations[lang].cta;
+
+      const lead = document.querySelector('.lead');
+      if (lead) lead.textContent = translations[lang].heroLead;
+
+      document.querySelectorAll('.hero-actions a').forEach((a,i)=>{ if (translations[lang].heroButtons[i]) a.textContent = translations[lang].heroButtons[i]; });
+      document.querySelectorAll('.copy-button').forEach(btn=>{ btn.textContent = translations[lang].copy; });
+      document.querySelectorAll('#contactLabelName, #contactLabelEmail, #contactLabelPhone, [data-fr][data-en]').forEach(el => {
+        if (el.dataset && el.dataset.fr && el.dataset.en) {
+          el.textContent = lang === 'en' ? el.dataset.en : el.dataset.fr;
+        }
+      });
+      document.querySelectorAll('.lang-btn').forEach(btn=>btn.classList.toggle('active', btn.dataset.lang === lang));
+      updateToggleButtonsByLanguage(lang);
+      localStorage.setItem('portfolio-language', lang);
+
+      const selectorMapEn = [
+          ['meta[name="description"]','Cybersecurity portfolio of Dimitri Radulovic, Junior Cybersecurity Analyst focused on SecOps and vulnerability management.'],
+          ['.hero .eyebrow','Cybersecurity portfolio'],
+          ['.hero-copy h1','Junior <span class="hero-accent">Cybersecurity Analyst</span>'],
+          ['.hero .micro-pill:nth-of-type(6)','Python automation'],
+          ['.hero-badge-card:nth-of-type(1) strong','Environments covered'],
+          ['.hero-badge-card:nth-of-type(1) span','Azure, industrial R&amp;D, international environments, bilingual support.'],
+          ['.hero-badge-card:nth-of-type(2) strong','Added value'],
+          ['.hero-badge-card:nth-of-type(2) span','Ability to analyze, prioritize, document, and move operational security topics forward.'],
+          ['.stat-card:nth-of-type(1) .stat-label','Focus'],
+          ['.stat-card:nth-of-type(1) .stat-value','SecOps • Vulnerability Management • Incident Response'],
+          ['.stat-card:nth-of-type(2) .stat-label','Approach'],
+          ['.stat-card:nth-of-type(2) .stat-value','Analysis, remediation, coordination, documentation, and continuous improvement'],
+          ['.hero-list li:nth-of-type(1)','Vulnerability management across VMs, containers, and exposed environments.'],
+          ['.hero-list li:nth-of-type(2)','Participation in war rooms, log collection, and investigation support for the sites under my scope.'],
+          ['.hero-list li:nth-of-type(3)','Strong understanding of Azure challenges and cloud hardening in industrial environments.'],
+          ['.hero-list li:nth-of-type(4)','Bilingual operational support, service mindset, and clear technical communication.'],
+          ['#apropos .eyebrow','About'],
+          ['#apropos .section-title','An operational, structured, results-oriented profile'],
+          ['#apropos .section-subtitle','I am looking for roles where security analysis, operational follow-up, incident response, and cloud or industrial environment hardening create tangible value for the business.'],
+          ['.about-text > p:nth-of-type(1)','My background has helped me build a solid operational foundation in cybersecurity, with exposure to vulnerability management, technical finding analysis, incident response, and Azure environment hardening within an international industrial context.'],
+          ['.about-text > p:nth-of-type(2)','I am used to turning technical results into actionable plans: qualifying a risk, explaining it clearly, tracking remediation, and coordinating the right stakeholders until a traceable outcome is achieved.'],
+          ['.about-text > p:nth-of-type(3)','Beyond the technical side, I bring a reliable, committed, and results-driven posture, with strong attention to detail, documentation quality, and execution standards. My goal is to join a cyber team where I can quickly be useful and keep growing.'],
+          ['#apropos .plus-item:nth-of-type(1) strong','Operational vision'],
+          ['#apropos .plus-item:nth-of-type(1) p','Vulnerability review, remediation tracking, prioritization, and coordination on the ground.'],
+          ['#apropos .plus-item:nth-of-type(2) strong','Cloud &amp; security mindset'],
+          ['#apropos .plus-item:nth-of-type(2) p','Solid understanding of Azure, exposure risks, and associated hardening measures.'],
+          ['#apropos .plus-item:nth-of-type(3) strong','Incident response'],
+          ['#apropos .plus-item:nth-of-type(3) p','Participation in scenarios and exercises, with a grasp of containment and escalation reflexes.'],
+          ['#apropos .plus-item:nth-of-type(4) strong','Professional reliability'],
+          ['#apropos .plus-item:nth-of-type(4) p','Clear communication, professional English, documentation discipline, and strong prioritization.'],
+          ['.about-points li:nth-of-type(1)','<strong>What I am looking for</strong>My first full-time role in operational cybersecurity, SecOps, incident response, or Azure security, with concrete responsibilities around analysis, treatment, and security posture improvement.'],
+          ['.about-points li:nth-of-type(2)','<strong>What I bring</strong>The ability to structure security follow-up, prioritize actions, coordinate multiple stakeholders, and contribute to topics that combine technical, organizational, and operational constraints.'],
+          ['.about-points li:nth-of-type(3)','<strong>My approach</strong>Understand the environment, qualify the findings, propose realistic actions, and ensure serious follow-up through remediation or the right escalation path.'],
+          ['#competences .eyebrow','Core skills'],
+          ['#competences .section-title','What I deliver in my assignments'],
+          ['#competences .section-subtitle','Skills applied to real contexts: SecOps, Azure, incident response, operational support, automation, and structured risk handling.'],
+          ['.skill-card:nth-of-type(1) ul li:nth-of-type(1)','Operational analysis of security topics with contextual understanding and impact assessment.'],
+          ['.skill-card:nth-of-type(1) ul li:nth-of-type(2)','Qualification, escalation, and ticket follow-up through resolution or arbitration.'],
+          ['.skill-card:nth-of-type(1) ul li:nth-of-type(3)','Cross-functional coordination with technical teams, business stakeholders, and perimeter owners.'],
+          ['.skill-card:nth-of-type(1) ul li:nth-of-type(4)','Clear, actionable reporting that supports security decision-making.'],
+          ['.skill-card:nth-of-type(2) ul li:nth-of-type(1)','Review, qualification, and consolidation of scan results from Qualys, Nessus, Tenable, or OpenVAS.'],
+          ['.skill-card:nth-of-type(2) ul li:nth-of-type(2)','Prioritization based on CVE severity, actual exposure, technical context, and environmental constraints.'],
+          ['.skill-card:nth-of-type(2) ul li:nth-of-type(3)','Remediation follow-up, targeted reminders, and collection of correction evidence.'],
+          ['.skill-card:nth-of-type(2) ul li:nth-of-type(4)','Structured management of a security backlog with a durable risk reduction mindset.'],
+          ['.skill-card:nth-of-type(3) ul li:nth-of-type(1)','Participation in incident management scenarios and exercises.'],
+          ['.skill-card:nth-of-type(3) ul li:nth-of-type(2)','Understanding of identification, containment, remediation, and lessons learned phases.'],
+          ['.skill-card:nth-of-type(3) ul li:nth-of-type(3)','Review of technical context elements to assess impact and urgency.'],
+          ['.skill-card:nth-of-type(3) ul li:nth-of-type(4)','Ability to document actions clearly and support efficient escalation.'],
+          ['.skill-card:nth-of-type(4) ul li:nth-of-type(1)','Understanding of Microsoft Azure and its core hardening challenges.'],
+          ['.skill-card:nth-of-type(4) ul li:nth-of-type(2)','Visibility into cloud resources, virtual machines, containers, and their exposure surface.'],
+          ['.skill-card:nth-of-type(4) ul li:nth-of-type(3)','Awareness of Microsoft Defender for Cloud, asset visibility, and cloud security best practices.'],
+          ['.skill-card:nth-of-type(4) ul li:nth-of-type(4)','Ability to integrate cloud constraints into security analysis and remediation.'],
+          ['.skill-card:nth-of-type(5) h3','Infrastructure &amp; network security'],
+          ['.skill-card:nth-of-type(5) ul li:nth-of-type(1)','Review of system, network, and workstation environments in heterogeneous contexts.'],
+          ['.skill-card:nth-of-type(5) ul li:nth-of-type(2)','Understanding of segmentation, flow control, and attack surface reduction challenges.'],
+          ['.skill-card:nth-of-type(5) ul li:nth-of-type(3)','Hands-on interaction with Active Directory, Windows Server, technical inventories, and asset visibility tools.'],
+          ['.skill-card:nth-of-type(5) ul li:nth-of-type(4)','Ability to quickly understand an IT architecture and adapt the security response.'],
+          ['.skill-card:nth-of-type(6) h3','Automation &amp; tooling'],
+          ['.skill-card:nth-of-type(6) ul li:nth-of-type(1)','Structured Jira / Confluence follow-up to improve traceability and action governance.'],
+          ['.skill-card:nth-of-type(6) ul li:nth-of-type(2)','Python automation of repetitive, low-value tasks.'],
+          ['.skill-card:nth-of-type(6) ul li:nth-of-type(3)','Data processing and reliability improvement through Excel, Pandas, Openpyxl, and APIs.'],
+          ['.skill-card:nth-of-type(6) ul li:nth-of-type(4)','A mindset focused on standardization, time savings, and process hardening.'],
+          ['#formation .eyebrow','Background'],
+          ['#formation .section-title','Education, software tools, and languages'],
+          ['#formation .section-subtitle','A path built around systems, networks, IT support, and operational cybersecurity, with a logical progression toward more security-focused responsibilities.'],
+          ['.study-card:nth-of-type(1) h3','Bachelor in Systems &amp; Network Administration (ASR)'],
+          ['.study-card:nth-of-type(1) .meta-pill:nth-of-type(1)','Systems &amp; networks'],
+          ['.study-card:nth-of-type(1) .meta-pill:nth-of-type(2)','Cybersecurity'],
+          ['#study-asr .detail-kicker:nth-of-type(1)','Learning outcomes'],
+          ['#study-asr li:nth-of-type(1)','Systems and network administration in structured environments.'],
+          ['#study-asr li:nth-of-type(2)','A broader approach to cybersecurity applied to infrastructures.'],
+          ['#study-asr li:nth-of-type(3)','A more operational view of IT environment hardening.'],
+          ['#study-asr li:nth-of-type(4)','A more rigorous working method on technical and project topics.'],
+          ['#study-asr .detail-block:nth-of-type(2) .detail-kicker','Why this degree'],
+          ['#study-asr .detail-block:nth-of-type(2) p','I chose this bachelor program to connect my systems and network fundamentals with a concrete infrastructure security mindset. It helps me move toward a more complete profile, able to understand an IT environment while bringing useful cyber insight to it.'],
+          ['.study-card:nth-of-type(2) h3','Professional Degree in IT Support Management (GMSI)'],
+          ['#study-gmsi .detail-block:nth-of-type(1) .detail-kicker','Learning outcomes'],
+          ['#study-gmsi li:nth-of-type(1)','Support, incident, and user request management.'],
+          ['#study-gmsi li:nth-of-type(2)','Organization, prioritization, and traceability of technical actions.'],
+          ['#study-gmsi li:nth-of-type(3)','Professional communication with varied stakeholders.'],
+          ['#study-gmsi li:nth-of-type(4)','Understanding of service, production, and continuity constraints.'],
+          ['#study-gmsi .detail-block:nth-of-type(2) .detail-kicker','Why this degree'],
+          ['#study-gmsi .detail-block:nth-of-type(2) p','This degree helped me strengthen my operational reflexes, processing rigor, and ability to support a service over time. I chose it to build a strong operational base before pushing my specialization further into cybersecurity.'],
+          ['.study-card:nth-of-type(3) h3','University Diploma in Networks &amp; Telecommunications'],
+          ['.study-card:nth-of-type(3) .meta-pill:nth-of-type(2)','Telecom'],
+          ['.study-card:nth-of-type(3) .meta-pill:nth-of-type(3)','Elite athlete'],
+          ['#study-dut .detail-block:nth-of-type(1) .detail-kicker','Learning outcomes'],
+          ['#study-dut li:nth-of-type(1)','Network fundamentals, addressing, services, and architecture.'],
+          ['#study-dut li:nth-of-type(2)','Foundations in systems, telecommunications, and infrastructure operations.'],
+          ['#study-dut li:nth-of-type(3)','Ability to read a technical environment as a whole.'],
+          ['#study-dut li:nth-of-type(4)','Development of an analytical mindset later useful in cybersecurity.'],
+          ['#study-dut li:nth-of-type(5)','Management of a dual academic / sports project through the elite American football student program.'],
+          ['#study-dut .detail-block:nth-of-type(2) .detail-kicker','Why this degree'],
+          ['#study-dut .detail-block:nth-of-type(2) p','I chose this university diploma to gain a broad technical understanding of networks, telecommunications, and systems, while also maintaining a demanding rhythm through the elite American football student track. This step strengthened my work discipline and laid the foundations for my move toward cybersecurity.'],
+          ['.tools-card .eyebrow','Tools'],
+          ['.tools-card h3','Software tools'],
+          ['.tools-card .case-meta','A structured view of the tools I have actually used, grouped by level of proficiency.'],
+          ['.tools-group:nth-of-type(1) h4','Advanced'],
+          ['.tools-group:nth-of-type(2) h4','Proficient'],
+          ['.tools-group:nth-of-type(3) h4','Intermediate'],
+          ['.tiny-badge.maitrise','Advanced'],
+          ['.tiny-badge.competent','Proficient'],
+          ['.tiny-badge.intermediaire','Intermediate'],
+          ['#formation .matrix-grid > article.card.reveal .eyebrow','Profile'],
+          ['#formation .matrix-grid > article.card.reveal h3[style]','Languages'],
+          ['.language-item:nth-of-type(1) .language-top span','Native'],
+          ['.language-item:nth-of-type(2) .language-top strong','English'],
+          ['.language-item:nth-of-type(2) .language-top span','Professional working proficiency'],
+          ['.language-item:nth-of-type(3) .language-top span','Intermediate (B2)'],
+          ['.language-item:nth-of-type(4) .language-top span','Intermediate (B2)'],
+          ['#dossiers .eyebrow','Skill case studies'],
+          ['#dossiers .section-title','Professional experience and skill case studies'],
+          ['#dossiers .section-subtitle','A concrete overview of my field experience, operational responsibilities, and the way I bring structure, follow-up, and value to cybersecurity topics.'],
+          ['.portfolio-intro','Below are structured assignments built around real actions: vulnerability management, remediation coordination, demanding technical support, early SecOps reflexes, incident response participation, and work across international industrial environments.'],
+          ['#case-schneider .case-meta','SecOps / Vulnerability Management — International industrial environment'],
+          ['#case-schneider .meta-pill:nth-of-type(2)','Grenoble / international scope'],
+          ['#case-schneider .case-highlight','In this role, I contributed to strengthening the security posture of industrial R&amp;D environments by working on vulnerability management, technical finding analysis, remediation coordination, and support for incident response topics across the sites under my scope.'],
+          ['#detail-schneider .detail-block:nth-of-type(1) h4','Context'],
+          ['#detail-schneider .detail-block:nth-of-type(1) p','Work carried out on a sensitive industrial R&amp;D scope in an international context, with strong challenges around visibility, attack surface reduction, multi-team coordination, and rigorous follow-up of security actions.'],
+          ['#detail-schneider .detail-block:nth-of-type(2) h4','Key responsibilities'],
+          ['#detail-schneider .detail-block:nth-of-type(2) li:nth-of-type(1)','Vulnerability analysis across VMs, containers, and exposed assets.'],
+          ['#detail-schneider .detail-block:nth-of-type(2) li:nth-of-type(2)','CVE qualification, context-based prioritization, and remediation tracking.'],
+          ['#detail-schneider .detail-block:nth-of-type(2) li:nth-of-type(3)','Review of penetration test reports and conversion of findings into action plans.'],
+          ['#detail-schneider .detail-block:nth-of-type(2) li:nth-of-type(4)','Contribution to external exposure reduction, segmentation, and critical asset hardening topics.'],
+          ['#detail-schneider .detail-block:nth-of-type(3) h4','Incident Response'],
+          ['#detail-schneider .detail-block:nth-of-type(3) li:nth-of-type(1)','Participation in war rooms for incidents affecting the sites I was responsible for.'],
+          ['#detail-schneider .detail-block:nth-of-type(3) li:nth-of-type(2)','Collection and consolidation of logs useful for incident analysis and follow-up.'],
+          ['#detail-schneider .detail-block:nth-of-type(3) li:nth-of-type(3)','Operational support to investigations by providing context and traceability elements.'],
+          ['#detail-schneider .detail-block:nth-of-type(3) li:nth-of-type(4)','Contribution to action tracking and coordination with the relevant teams.'],
+          ['#detail-schneider .detail-block:nth-of-type(4) h4','Tools &amp; environment'],
+          ['#detail-schneider .detail-block:nth-of-type(5) h4','Added value'],
+          ['#detail-schneider .detail-block:nth-of-type(5) .plus-item:nth-of-type(1) strong','Risk reduction'],
+          ['#detail-schneider .detail-block:nth-of-type(5) .plus-item:nth-of-type(1) p','More reliable vulnerability follow-up and more consistent remediation prioritization.'],
+          ['#detail-schneider .detail-block:nth-of-type(5) .plus-item:nth-of-type(2) strong','Cross-functional vision'],
+          ['#detail-schneider .detail-block:nth-of-type(5) .plus-item:nth-of-type(2) p','Ability to connect technical findings, field constraints, and operational decisions.'],
+          ['#detail-schneider .detail-block:nth-of-type(5) .plus-item:nth-of-type(3) strong','Automation'],
+          ['#detail-schneider .detail-block:nth-of-type(5) .plus-item:nth-of-type(3) p','Automation and structured follow-up to improve efficiency and traceability.'],
+          ['#detail-schneider .detail-block:nth-of-type(5) .plus-item:nth-of-type(4) strong','Concrete impact'],
+          ['#detail-schneider .detail-block:nth-of-type(5) .plus-item:nth-of-type(4) p','Contribution to long-term security posture improvement across sensitive environments.'],
+          ['#case-experis h3','Experis France — IT Support Technician N0'],
+          ['#case-experis .case-meta','User support — Luxury client Dior'],
+          ['#case-experis .tag:nth-of-type(4)','English'],
+          ['#case-experis .case-highlight','A premium support experience, mostly in English, that allowed me to strengthen my operational and technical foundation in a demanding environment where execution quality and communication are essential.'],
+          ['#detail-experis .detail-block:nth-of-type(1) h4','Context'],
+          ['#detail-experis .detail-block:nth-of-type(1) p','N0 support for luxury client Dior in an environment focused on service quality, responsiveness, and user relations, with English used in most exchanges and request handling.'],
+          ['#detail-experis .detail-block:nth-of-type(2) h4','Key responsibilities'],
+          ['#detail-experis .detail-block:nth-of-type(2) li:nth-of-type(1)','First-level user support in French and English.'],
+          ['#detail-experis .detail-block:nth-of-type(2) li:nth-of-type(2)','Qualification, processing, and follow-up of incidents and user requests.'],
+          ['#detail-experis .detail-block:nth-of-type(2) li:nth-of-type(3)','Use of Active Directory and Windows Server for day-to-day support operations.'],
+          ['#detail-experis .detail-block:nth-of-type(2) li:nth-of-type(4)','Ticket management through ServiceNow in front and back office.'],
+          ['#detail-experis .detail-block:nth-of-type(3) h4','Demonstrated skills'],
+          ['#detail-experis .detail-block:nth-of-type(3) li:nth-of-type(1)','Fast diagnosis, service mindset, and strong request prioritization.'],
+          ['#detail-experis .detail-block:nth-of-type(3) li:nth-of-type(2)','Professional communication in English within a demanding environment.'],
+          ['#detail-experis .detail-block:nth-of-type(3) li:nth-of-type(3)','Rigor in follow-up, escalation, and traceability of actions performed.'],
+          ['#detail-experis .detail-block:nth-of-type(3) li:nth-of-type(4)','Strengthening of operational and technical foundations across Windows environments.'],
+          ['#detail-experis .detail-block:nth-of-type(4) h4','Tools &amp; environment'],
+          ['#detail-experis .detail-block:nth-of-type(4) li:nth-of-type(4)','Premium support in an international environment'],
+          ['#detail-experis .detail-block:nth-of-type(5) h4','What this experience brought me'],
+          ['#detail-experis .detail-block:nth-of-type(5) p','This assignment strengthened my execution quality, my ability to work under service constraints, and my ease with technical communication. It also reinforced my operational and technical foundation, which is now useful when handling cyber topics with discipline and method.'],
+          ['#detail-experis .detail-block:nth-of-type(6) h4','Added value'],
+          ['#detail-experis .detail-block:nth-of-type(6) > p','I developed a reliable, professional, and user-oriented posture, with strong rigor in request handling — qualities that transfer directly to SecOps, security support, or incident management environments.'],
+          ['#detail-experis .plus-item:nth-of-type(1) strong','Service culture'],
+          ['#detail-experis .plus-item:nth-of-type(1) p','Strengthened execution quality in a premium and demanding context.'],
+          ['#detail-experis .plus-item:nth-of-type(2) strong','Bilingual communication'],
+          ['#detail-experis .plus-item:nth-of-type(2) p','Comfortable in English for incident handling and technical exchanges.'],
+          ['#detail-experis .plus-item:nth-of-type(3) strong','Operational rigor'],
+          ['#detail-experis .plus-item:nth-of-type(3) p','Clean ticket follow-up, useful escalations, and traceability of actions.'],
+          ['#detail-experis .plus-item:nth-of-type(4) strong','Solid technical base'],
+          ['#detail-experis .plus-item:nth-of-type(4) p','Strengthened Windows, AD, and ServiceNow reflexes transferable to cybersecurity.'],
+          ['#case-schneider-intern .case-meta','Introductory cybersecurity internship'],
+          ['#case-schneider-intern .case-highlight','A first concrete immersion in an industrial SecOps environment, with work on vulnerability management, review of a critical Azure environment, and participation in an incident response simulation on the EcoStruxure Technology Platform.'],
+          ['#detail-schneider-intern .detail-block:nth-of-type(1) h4','Context'],
+          ['#detail-schneider-intern .detail-block:nth-of-type(1) p','Internship completed within Schneider Electric’s SecOps team on the ETP platform, an IoT environment hosted on Microsoft Azure and considered critical for the company.'],
+          ['#detail-schneider-intern .detail-block:nth-of-type(2) h4','Achievements'],
+          ['#detail-schneider-intern .detail-block:nth-of-type(2) li:nth-of-type(1)','Identification of VM owners and preparation of vulnerability reports.'],
+          ['#detail-schneider-intern .detail-block:nth-of-type(2) li:nth-of-type(2)','Formatting and delivery of reports to support remediation follow-up.'],
+          ['#detail-schneider-intern .detail-block:nth-of-type(2) li:nth-of-type(3)','Tracking patching progress and vulnerability counts on virtual machines.'],
+          ['#detail-schneider-intern .detail-block:nth-of-type(2) li:nth-of-type(4)','Participation in the preparation and execution of a cyber incident simulation.'],
+          ['#detail-schneider-intern .detail-block:nth-of-type(3) h4','Tools &amp; environment'],
+          ['#detail-schneider-intern .detail-block:nth-of-type(3) li:nth-of-type(4)','Follow-up documentation and SecOps coordination'],
+          ['#detail-schneider-intern .detail-block:nth-of-type(4) h4','Skills developed'],
+          ['#detail-schneider-intern .detail-block:nth-of-type(4) li:nth-of-type(1)','Practical understanding of the vulnerability management lifecycle.'],
+          ['#detail-schneider-intern .detail-block:nth-of-type(4) li:nth-of-type(2)','Ability to read an Azure cloud environment and the criticality attached to its assets.'],
+          ['#detail-schneider-intern .detail-block:nth-of-type(4) li:nth-of-type(3)','Early incident response reflexes and scenario structuring fundamentals.'],
+          ['#detail-schneider-intern .detail-block:nth-of-type(4) li:nth-of-type(4)','Discipline in documentation, information gathering, and communication.'],
+          ['#detail-schneider-intern .detail-block:nth-of-type(5) h4','Added value'],
+          ['#detail-schneider-intern .detail-block:nth-of-type(5) > p','This internship laid strong foundations in my cyber path: understanding vulnerability management, concrete exposure to Azure security, and first experience with incident response logic in a demanding industrial context.'],
+          ['#detail-schneider-intern .plus-item:nth-of-type(1) strong','Cyber perspective'],
+          ['#detail-schneider-intern .plus-item:nth-of-type(1) p','First practical understanding of the vulnerability → prioritization → remediation cycle.'],
+          ['#detail-schneider-intern .plus-item:nth-of-type(2) strong','Cloud mindset'],
+          ['#detail-schneider-intern .plus-item:nth-of-type(2) p','Operational discovery of Azure, Defender for Cloud, and asset exposure.'],
+          ['#detail-schneider-intern .plus-item:nth-of-type(3) strong','Incident reflexes'],
+          ['#detail-schneider-intern .plus-item:nth-of-type(3) p','Participation in a simulation with coordination, documentation, and escalation logic.'],
+          ['#detail-schneider-intern .plus-item:nth-of-type(4) strong','SecOps posture'],
+          ['#detail-schneider-intern .plus-item:nth-of-type(4) p','Learning a rigorous working method within a critical industrial environment.'],
+          ['#contact .eyebrow','Contact'],
+          ['#contact .section-title','Get in touch easily'],
+          ['#contact .section-subtitle','Available to discuss an opportunity in operational cybersecurity, SecOps, Azure security, vulnerability management, or incident response.'],
+          ['.contact-intro h3','Direct contact details'],
+          ['.contact-intro p','Quick access to my contact information to make it easy to connect, schedule a call, or send an opportunity directly.'],
+          ['.availability','Available'],
+          ['.contact-card-secondary .contact-row:nth-of-type(1)','<strong>Positioning</strong>Junior cybersecurity analyst focused on SecOps, vulnerability management, Azure cloud security, and incident response.'],
+          ['.contact-card-secondary .contact-row:nth-of-type(2)','<strong>Value delivered</strong>Rigor, follow-up discipline, analytical skills, clear communication, and a strong willingness to bring operational value to a cyber team.'],
+          ['.contact-card-secondary .contact-row:nth-of-type(3) strong','Version'],
+          ['.footer p','© <span id="year"></span> Dimitri Radulovic — Cybersecurity portfolio']
+        
+        ];
+
+      window.__portfolioFrMap = window.__portfolioFrMap || selectorMapEn
+        .map(([selector]) => {
+          const el = document.querySelector(selector);
+          if (!el) return null;
+          const value = el.tagName === 'META' ? (el.getAttribute('content') || '') : el.innerHTML;
+          return [selector, value];
+        })
+        .filter(Boolean);
+
+      const selectorMapFr = window.__portfolioFrMap;
+
+      if (lang === 'en') {
+        document.title = 'Dimitri Radulovic | Cybersecurity Portfolio';
+        applySelectorMap(selectorMapEn);
+      } else {
+        document.title = 'Dimitri Radulovic | Portfolio Cybersécurité';
+        applySelectorMap(selectorMapFr);
+      }
+
+      document.querySelectorAll('[data-fr][data-en]').forEach(el => {
+        el.innerHTML = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-fr');
+      });
+
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    };
+    langButtons.forEach(btn => btn.addEventListener('click', () => applyLanguage(btn.dataset.lang)));
+    applyLanguage(localStorage.getItem('portfolio-language') || 'fr');
+    const year = document.getElementById('year');
+    if (year) {
+      year.textContent = new Date().getFullYear();
+    }
+  </script>
+</body>
+</html>
